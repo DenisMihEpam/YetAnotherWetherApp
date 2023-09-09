@@ -4,30 +4,37 @@ import Combine
 
 final class SearchViewModel: ObservableObject {
     @Published var searchText: String = ""
-    var selectedPlace: Place?
+    @Published var selectedPlace: Place?
     @Published var places: [Place] = []
     let searchHandler: (Place) -> Void
     private var cancellable = Set<AnyCancellable>()
-    let coordinator: SearchCoordinator
+    let coordinator: SearchCoordinating
     var errorMessage: String?
     
-    init( searchHandler: @escaping (Place) -> Void) {
+    init(coordinator: SearchCoordinating, searchHandler: @escaping (Place) -> Void) {
+        self.coordinator = coordinator
         self.searchHandler = searchHandler
-        coordinator = SearchCoordinator(networkManager: NetworkManager())
         self.$searchText
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .sink { text in
-
                 Task {@MainActor [weak self] in
                     guard let self else { return }
                     do {
                         let places = try  await self.coordinator.searchCiti(searchText: self.searchText)
-                        self.places = places
+                        self.places = [Place.currentLocation] + places
                     } catch {
                         if let appError = error as? AppError {
                             errorMessage = appError.errorMessage
                         }
                     }
+                }
+            }
+            .store(in: &cancellable)
+        
+        self.$selectedPlace
+            .sink { place in
+                if let place {
+                    searchHandler(place)
                 }
             }
             .store(in: &cancellable)

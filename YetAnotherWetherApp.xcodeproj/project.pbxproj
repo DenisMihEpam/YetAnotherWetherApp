@@ -11,9 +11,7 @@
 		3C3D14482AA885D2007AC704 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14472AA885D2007AC704 /* ContentView.swift */; };
 		3C3D144A2AA885D3007AC704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3D14492AA885D3007AC704 /* Assets.xcassets */; };
 		3C3D144E2AA885D3007AC704 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3D144D2AA885D3007AC704 /* Preview Assets.xcassets */; };
-		3C3D14582AA885D3007AC704 /* YetAnotherWetherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14572AA885D3007AC704 /* YetAnotherWetherAppTests.swift */; };
-		3C3D14622AA885D3007AC704 /* YetAnotherWetherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14612AA885D3007AC704 /* YetAnotherWetherAppUITests.swift */; };
-		3C3D14642AA885D3007AC704 /* YetAnotherWetherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14632AA885D3007AC704 /* YetAnotherWetherAppUITestsLaunchTests.swift */; };
+		3C3D14582AA885D3007AC704 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14572AA885D3007AC704 /* AppCoordinatorTests.swift */; };
 		3C3D14722AA887A9007AC704 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14712AA887A9007AC704 /* AppCoordinator.swift */; };
 		3C3D14742AA88969007AC704 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14732AA88969007AC704 /* Constants.swift */; };
 		3C3D14762AA88A33007AC704 /* WetherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D14752AA88A33007AC704 /* WetherCoordinator.swift */; };
@@ -36,17 +34,18 @@
 		3C68ACAA2AAA1256003900EB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68ACA92AAA1256003900EB /* SearchViewModel.swift */; };
 		3C68ACAC2AAA1833003900EB /* SearchViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68ACAB2AAA1833003900EB /* SearchViewModelMock.swift */; };
 		3C68ACAE2AAA1B85003900EB /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68ACAD2AAA1B85003900EB /* SearchCoordinator.swift */; };
+		3CD01DEA2AAC84CE00ED3AA0 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DE92AAC84CE00ED3AA0 /* AppError.swift */; };
+		3CD01DEC2AAC85A600ED3AA0 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DEB2AAC85A600ED3AA0 /* DependencyContainer.swift */; };
+		3CD01DEF2AAC879E00ED3AA0 /* WetherCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DEE2AAC879E00ED3AA0 /* WetherCoordinatorMock.swift */; };
+		3CD01DF12AAC882B00ED3AA0 /* NetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DF02AAC882B00ED3AA0 /* NetworkManagerMock.swift */; };
+		3CD01DF32AAC88C700ED3AA0 /* PersistenceManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DF22AAC88C700ED3AA0 /* PersistenceManagerMock.swift */; };
+		3CD01DF52AAC895100ED3AA0 /* LocationCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DF42AAC895100ED3AA0 /* LocationCoordinatorMock.swift */; };
+		3CD01DF72AAC8A5700ED3AA0 /* DependencyContainerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DF62AAC8A5700ED3AA0 /* DependencyContainerMock.swift */; };
+		3CD01DF92AAC8AF400ED3AA0 /* SearchCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD01DF82AAC8AF400ED3AA0 /* SearchCoordinatorMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		3C3D14542AA885D3007AC704 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3C3D143A2AA885D1007AC704 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3C3D14412AA885D2007AC704;
-			remoteInfo = YetAnotherWetherApp;
-		};
-		3C3D145E2AA885D3007AC704 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3C3D143A2AA885D1007AC704 /* Project object */;
 			proxyType = 1;
@@ -63,10 +62,7 @@
 		3C3D144B2AA885D3007AC704 /* YetAnotherWetherApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YetAnotherWetherApp.entitlements; sourceTree = "<group>"; };
 		3C3D144D2AA885D3007AC704 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3C3D14532AA885D3007AC704 /* YetAnotherWetherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YetAnotherWetherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C3D14572AA885D3007AC704 /* YetAnotherWetherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YetAnotherWetherAppTests.swift; sourceTree = "<group>"; };
-		3C3D145D2AA885D3007AC704 /* YetAnotherWetherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YetAnotherWetherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C3D14612AA885D3007AC704 /* YetAnotherWetherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YetAnotherWetherAppUITests.swift; sourceTree = "<group>"; };
-		3C3D14632AA885D3007AC704 /* YetAnotherWetherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YetAnotherWetherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3C3D14572AA885D3007AC704 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		3C3D14712AA887A9007AC704 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3C3D14732AA88969007AC704 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3C3D14752AA88A33007AC704 /* WetherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WetherCoordinator.swift; sourceTree = "<group>"; };
@@ -88,6 +84,14 @@
 		3C68ACA92AAA1256003900EB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3C68ACAB2AAA1833003900EB /* SearchViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelMock.swift; sourceTree = "<group>"; };
 		3C68ACAD2AAA1B85003900EB /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		3CD01DE92AAC84CE00ED3AA0 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		3CD01DEB2AAC85A600ED3AA0 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		3CD01DEE2AAC879E00ED3AA0 /* WetherCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WetherCoordinatorMock.swift; sourceTree = "<group>"; };
+		3CD01DF02AAC882B00ED3AA0 /* NetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerMock.swift; sourceTree = "<group>"; };
+		3CD01DF22AAC88C700ED3AA0 /* PersistenceManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerMock.swift; sourceTree = "<group>"; };
+		3CD01DF42AAC895100ED3AA0 /* LocationCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCoordinatorMock.swift; sourceTree = "<group>"; };
+		3CD01DF62AAC8A5700ED3AA0 /* DependencyContainerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainerMock.swift; sourceTree = "<group>"; };
+		3CD01DF82AAC8AF400ED3AA0 /* SearchCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinatorMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,13 +110,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3C3D145A2AA885D3007AC704 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -121,7 +118,6 @@
 			children = (
 				3C3D14442AA885D2007AC704 /* YetAnotherWetherApp */,
 				3C3D14562AA885D3007AC704 /* YetAnotherWetherAppTests */,
-				3C3D14602AA885D3007AC704 /* YetAnotherWetherAppUITests */,
 				3C3D14432AA885D2007AC704 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,7 +127,6 @@
 			children = (
 				3C3D14422AA885D2007AC704 /* YetAnotherWetherApp.app */,
 				3C3D14532AA885D3007AC704 /* YetAnotherWetherAppTests.xctest */,
-				3C3D145D2AA885D3007AC704 /* YetAnotherWetherAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,6 +136,7 @@
 			children = (
 				3C3D14452AA885D2007AC704 /* YetAnotherWetherAppApp.swift */,
 				3C3D14712AA887A9007AC704 /* AppCoordinator.swift */,
+				3CD01DEB2AAC85A600ED3AA0 /* DependencyContainer.swift */,
 				3C68ACB22AAB1012003900EB /* Wether */,
 				3C68ACAF2AAB0FB1003900EB /* Search */,
 				3C68ACB02AAB0FC0003900EB /* Shared */,
@@ -162,18 +158,10 @@
 		3C3D14562AA885D3007AC704 /* YetAnotherWetherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				3C3D14572AA885D3007AC704 /* YetAnotherWetherAppTests.swift */,
+				3CD01DED2AAC877600ED3AA0 /* Mocks */,
+				3C3D14572AA885D3007AC704 /* AppCoordinatorTests.swift */,
 			);
 			path = YetAnotherWetherAppTests;
-			sourceTree = "<group>";
-		};
-		3C3D14602AA885D3007AC704 /* YetAnotherWetherAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3C3D14612AA885D3007AC704 /* YetAnotherWetherAppUITests.swift */,
-				3C3D14632AA885D3007AC704 /* YetAnotherWetherAppUITestsLaunchTests.swift */,
-			);
-			path = YetAnotherWetherAppUITests;
 			sourceTree = "<group>";
 		};
 		3C3D14772AA88AB9007AC704 /* Models */ = {
@@ -221,6 +209,7 @@
 		3C68ACB02AAB0FC0003900EB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3CD01DE92AAC84CE00ED3AA0 /* AppError.swift */,
 				3C3D14732AA88969007AC704 /* Constants.swift */,
 				3C3D14992AA9C5EA007AC704 /* Extensions.swift */,
 				3C68ACB42AAB1150003900EB /* Persistence */,
@@ -266,6 +255,19 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		3CD01DED2AAC877600ED3AA0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3CD01DEE2AAC879E00ED3AA0 /* WetherCoordinatorMock.swift */,
+				3CD01DF02AAC882B00ED3AA0 /* NetworkManagerMock.swift */,
+				3CD01DF22AAC88C700ED3AA0 /* PersistenceManagerMock.swift */,
+				3CD01DF42AAC895100ED3AA0 /* LocationCoordinatorMock.swift */,
+				3CD01DF82AAC8AF400ED3AA0 /* SearchCoordinatorMock.swift */,
+				3CD01DF62AAC8A5700ED3AA0 /* DependencyContainerMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -307,24 +309,6 @@
 			productReference = 3C3D14532AA885D3007AC704 /* YetAnotherWetherAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3C3D145C2AA885D3007AC704 /* YetAnotherWetherAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3C3D146D2AA885D3007AC704 /* Build configuration list for PBXNativeTarget "YetAnotherWetherAppUITests" */;
-			buildPhases = (
-				3C3D14592AA885D3007AC704 /* Sources */,
-				3C3D145A2AA885D3007AC704 /* Frameworks */,
-				3C3D145B2AA885D3007AC704 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3C3D145F2AA885D3007AC704 /* PBXTargetDependency */,
-			);
-			name = YetAnotherWetherAppUITests;
-			productName = YetAnotherWetherAppUITests;
-			productReference = 3C3D145D2AA885D3007AC704 /* YetAnotherWetherAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -339,10 +323,6 @@
 						CreatedOnToolsVersion = 14.3;
 					};
 					3C3D14522AA885D3007AC704 = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 3C3D14412AA885D2007AC704;
-					};
-					3C3D145C2AA885D3007AC704 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 3C3D14412AA885D2007AC704;
 					};
@@ -366,7 +346,6 @@
 			targets = (
 				3C3D14412AA885D2007AC704 /* YetAnotherWetherApp */,
 				3C3D14522AA885D3007AC704 /* YetAnotherWetherAppTests */,
-				3C3D145C2AA885D3007AC704 /* YetAnotherWetherAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -383,13 +362,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3C3D14512AA885D3007AC704 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C3D145B2AA885D3007AC704 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -416,6 +388,7 @@
 				3C3D148C2AA8B576007AC704 /* PersistenceManager.swift in Sources */,
 				3C3D147D2AA8A85B007AC704 /* WetherViewModel.swift in Sources */,
 				3C68ACAC2AAA1833003900EB /* SearchViewModelMock.swift in Sources */,
+				3CD01DEA2AAC84CE00ED3AA0 /* AppError.swift in Sources */,
 				3C3D14462AA885D2007AC704 /* YetAnotherWetherAppApp.swift in Sources */,
 				3C3D149C2AA9D8C8007AC704 /* SearchView.swift in Sources */,
 				3C3D148A2AA8B321007AC704 /* ErrorView.swift in Sources */,
@@ -424,6 +397,7 @@
 				3C3D14742AA88969007AC704 /* Constants.swift in Sources */,
 				3C3D149A2AA9C5EA007AC704 /* Extensions.swift in Sources */,
 				3C3D14762AA88A33007AC704 /* WetherCoordinator.swift in Sources */,
+				3CD01DEC2AAC85A600ED3AA0 /* DependencyContainer.swift in Sources */,
 				3C3D14812AA8AA72007AC704 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,16 +406,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C3D14582AA885D3007AC704 /* YetAnotherWetherAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C3D14592AA885D3007AC704 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3C3D14642AA885D3007AC704 /* YetAnotherWetherAppUITestsLaunchTests.swift in Sources */,
-				3C3D14622AA885D3007AC704 /* YetAnotherWetherAppUITests.swift in Sources */,
+				3C3D14582AA885D3007AC704 /* AppCoordinatorTests.swift in Sources */,
+				3CD01DF32AAC88C700ED3AA0 /* PersistenceManagerMock.swift in Sources */,
+				3CD01DEF2AAC879E00ED3AA0 /* WetherCoordinatorMock.swift in Sources */,
+				3CD01DF92AAC8AF400ED3AA0 /* SearchCoordinatorMock.swift in Sources */,
+				3CD01DF12AAC882B00ED3AA0 /* NetworkManagerMock.swift in Sources */,
+				3CD01DF72AAC8A5700ED3AA0 /* DependencyContainerMock.swift in Sources */,
+				3CD01DF52AAC895100ED3AA0 /* LocationCoordinatorMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,11 +423,6 @@
 			isa = PBXTargetDependency;
 			target = 3C3D14412AA885D2007AC704 /* YetAnotherWetherApp */;
 			targetProxy = 3C3D14542AA885D3007AC704 /* PBXContainerItemProxy */;
-		};
-		3C3D145F2AA885D3007AC704 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3C3D14412AA885D2007AC704 /* YetAnotherWetherApp */;
-			targetProxy = 3C3D145E2AA885D3007AC704 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -696,50 +662,6 @@
 			};
 			name = Release;
 		};
-		3C3D146E2AA885D3007AC704 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UX58MRWBW6;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = denismih.com.YetAnotherWetherAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = YetAnotherWetherApp;
-			};
-			name = Debug;
-		};
-		3C3D146F2AA885D3007AC704 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UX58MRWBW6;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = denismih.com.YetAnotherWetherAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = YetAnotherWetherApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -766,15 +688,6 @@
 			buildConfigurations = (
 				3C3D146B2AA885D3007AC704 /* Debug */,
 				3C3D146C2AA885D3007AC704 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3C3D146D2AA885D3007AC704 /* Build configuration list for PBXNativeTarget "YetAnotherWetherAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3C3D146E2AA885D3007AC704 /* Debug */,
-				3C3D146F2AA885D3007AC704 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

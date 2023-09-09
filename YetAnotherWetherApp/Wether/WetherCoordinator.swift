@@ -1,7 +1,11 @@
 import Foundation
 import CoreLocation
 
-final class WetherCoordinator {
+protocol WetherCoordinating {
+    func getCurrentWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) async throws -> WetherResponse
+}
+
+final class WetherCoordinator: WetherCoordinating {
     let networkManager: Networking
     
     init(networkManager: Networking) {

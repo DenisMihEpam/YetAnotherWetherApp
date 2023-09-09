@@ -2,54 +2,35 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-enum AppError: Error {
-    case invalidResponse
-    case invalidData
-    case locationManagerUnauthorized
-    case locationError
-    
-    var errorMessage: String {
-        switch self {
-            case .invalidResponse:
-                return "Network error. Please check your connection"
-            case .invalidData:
-                return "Network error. Looks like API has been updated"
-            case .locationManagerUnauthorized:
-                return "Location error. Please give app permission to receive your current location"
-            case .locationError:
-                return "Location error. Something goes wrong"
-        }
-    }
-}
-
-
 final class AppCoordinator {
     var wetherViewModel: WetherViewModel?
-    let persistenceManager: PersistenceManager
-    let wetherCoordinator: WetherCoordinator
-    let locationCoordinator: LocationCoordinator
-    var specificLocationSelected: Bool = false
+    var persistenceManager: Persistence
+    var wetherCoordinator: WetherCoordinating
+    var locationCoordinator: LocationCoordinating
+    var searchCoordinator: SearchCoordinating
+    var networkManager: Networking
+    var lastLocation = CLLocation(latitude: 0, longitude: 0)
+    let minDistance = 500.0
     
-    init(
-        wetherViewModel: WetherViewModel? = nil,
-        persistenceManager: PersistenceManager,
-        wetherCoordinator: WetherCoordinator,
-        locationCoordinator: LocationCoordinator
-    ) {
-        self.wetherViewModel = wetherViewModel
-        self.persistenceManager = persistenceManager
-        self.wetherCoordinator = wetherCoordinator
-        self.locationCoordinator = locationCoordinator
+    init(dependencyContainer: DependencyContainer) {
+        self.networkManager = dependencyContainer.networkManager
+        self.persistenceManager = dependencyContainer.persistenceManager
+        self.wetherCoordinator = dependencyContainer.wetherCoordinator
+        self.locationCoordinator = dependencyContainer.locationCoordinator
+        self.searchCoordinator = dependencyContainer.searchCoordinator
     }
     
     @MainActor func makeInitialScreen() -> some View{
         
-        let viewModel = WetherViewModel(state: .loading, searchViewHandler: searchViewHandler)
-        wetherViewModel = viewModel
+        let wetherViewModel = WetherViewModel(state: .loading)
+        self.wetherViewModel = wetherViewModel
+        let searchViewModel = SearchViewModel(coordinator: searchCoordinator, searchHandler: searchViewHandler(_:))
         Task {
             await checkInitialState()
         }
-        return ContentView(viewModel: viewModel)
+        let contentView =  ContentView(viewModel: wetherViewModel)
+                            .environmentObject(searchViewModel)
+        return contentView
     }
     
     func checkInitialState() async {
@@ -76,32 +57,35 @@ final class AppCoordinator {
     
     func startUpdatingLocations() async {
         do {
-            let _ = try await locationCoordinator.requestAutorization()
+            try await locationCoordinator.requestAutorization()
             let stream = try await locationCoordinator.getCurrentLocation()
-            for await data in stream {
-                if !specificLocationSelected {
+            
+            for await location in stream {
+                if lastLocation.distance(from: location) > minDistance {
+                    lastLocation = location
                     Task{ @MainActor in
-                        wetherViewModel?.state = await requestWether(for: data.coordinate)
+                        wetherViewModel?.state = await requestWether(for: location.coordinate)
                     }
-                    persistenceManager.save(coordinate: data.coordinate)
+                    persistenceManager.save(coordinate: location.coordinate)
                 }
             }
         } catch {
             if let locationError = error as? AppError {
-                handleLocationError(locationError)
+                Task{ @MainActor in
+                    wetherViewModel?.state = .error(locationError)
+                }
             }
         }
     }
-    
-    func handleLocationError(_ error: AppError) {
-        if !specificLocationSelected {
-            Task{ @MainActor in
-                wetherViewModel?.state = .error(error)
-            }
-        }
-    }
-    
+  
     func searchViewHandler(_ place: Place) {
-        print("handler")
+        Task { @MainActor in
+            if place.id == Place.currentLocation.id {
+                await startUpdatingLocations()
+            } else {
+                locationCoordinator.stop()
+                wetherViewModel?.state = await requestWether(for: CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon))
+            }
+        }
     }
 }

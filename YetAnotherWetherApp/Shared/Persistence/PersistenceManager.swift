@@ -1,7 +1,12 @@
 import Foundation
 import CoreLocation
 
-final class PersistenceManager {
+protocol Persistence {
+    func save(coordinate: CLLocationCoordinate2D)
+    func getCoordinate() -> CLLocationCoordinate2D?
+}
+
+final class PersistenceManager: Persistence {
     
     func save(coordinate: CLLocationCoordinate2D) {
         UserDefaults.standard.setValue(coordinate.latitude, forKey: Constants.storedLocationLatKey)

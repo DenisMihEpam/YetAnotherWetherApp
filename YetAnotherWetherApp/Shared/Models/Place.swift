@@ -18,3 +18,22 @@ extension Place: Identifiable {
         String("\(lat)\(lon)\(name)")
     }
 }
+
+extension Place {
+    static var currentLocation: Place {
+        return Place(name: "Current location", lat: 0, lon: 0, country: "")
+    }
+    var formattedPlaceTitle: String {
+        var title = self.name
+        if !self.country.isEmpty {
+            title += ", " + self.country
+        }
+        return title
+    }
+}
+
+extension Place {
+    static var mock: Place {
+        return Place(name: "Prague", lat: 0, lon: 0, country: "CZ")
+    }
+}

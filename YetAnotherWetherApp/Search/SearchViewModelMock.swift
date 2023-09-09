@@ -2,6 +2,6 @@ import Foundation
 
 extension SearchViewModel {
     static var mock: SearchViewModel {
-        SearchViewModel(searchHandler: {_ in })
+        SearchViewModel(coordinator: SearchCoordinator(networkManager: NetworkManager()), searchHandler: {_ in })
     }
 }

@@ -10,13 +10,10 @@ enum WetherViewState{
 @MainActor final class WetherViewModel: ObservableObject {
     
     @Published var state: WetherViewState
-    var searchViewHandler: (Place) -> Void = { _ in }
     
     init(
-        state: WetherViewState,
-        searchViewHandler: @escaping (Place) -> Void
+        state: WetherViewState
     ) {
         self.state = state
-        self.searchViewHandler = searchViewHandler
     }
 }

@@ -1,8 +1,12 @@
 import Foundation
 import SwiftUI
 
-final class SearchCoordinator: ObservableObject {
-let networkManager: Networking
+protocol SearchCoordinating {
+    func searchCiti(searchText: String) async throws -> [Place]
+}
+
+final class SearchCoordinator: SearchCoordinating {
+    let networkManager: Networking
     
     init(networkManager: Networking) {
         self.networkManager = networkManager

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct WetherView: View {
-    @State var model: WetherResponse
-    let searchViewHandler: ((Place) -> Void)
+    @EnvironmentObject var searchViewModel: SearchViewModel
     @State private var path = NavigationPath()
+    var model: WetherResponse
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -53,7 +53,7 @@ struct WetherView: View {
                     }
                     .navigationDestination(for: String.self) { view in
                         if view == "SearchView" {
-                            SearchView(model: SearchViewModel(searchHandler: searchViewHandler))
+                            SearchView(model: searchViewModel)
                         }
                     }
                 }
@@ -72,8 +72,9 @@ struct WetherView: View {
             VStack {
                 HStack {
                     VStack(spacing: 20) {
-                        Image(systemName: "sun.max")
-                            .font(.system(size: 40))
+                        model.weather[0].weatherIcon
+                            .resizable()
+                            .frame(width: 30, height: 30)
                         
                         Text("\(model.weather[0].main)")
                     }
@@ -93,7 +94,7 @@ struct WetherView: View {
         }
     }
     @ViewBuilder var cityImage: some View {
-        
+        // FIXME: Need some city image service
         AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2020/01/24/21/33/city-4791269_960_720.png")) { image in
             image
                 .resizable()
@@ -135,6 +136,6 @@ struct WetherView: View {
 
 struct WetherView_Previews: PreviewProvider {
     static var previews: some View {
-        WetherView(model: .mock, searchViewHandler: {_ in })
+        WetherView(model: .mock)
     }
 }

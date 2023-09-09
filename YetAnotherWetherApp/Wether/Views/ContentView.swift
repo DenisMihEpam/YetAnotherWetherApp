@@ -7,7 +7,7 @@ struct ContentView: View {
             case .loading:
                 LoadingView()
             case .results(let model):
-                WetherView(model: model, searchViewHandler: viewModel.searchViewHandler)
+                WetherView(model: model)
             case .error(let error):
                 ErrorView(error: error)
         }
