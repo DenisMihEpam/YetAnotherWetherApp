@@ -188,9 +188,9 @@
 		3C3D14842AA8ACAE007AC704 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				3C3D148F2AA8B7EE007AC704 /* WetherViewModelMock.swift */,
 				3C3D14852AA8AD8F007AC704 /* WetherResponseMock.swift */,
 				3C3D14872AA8ADF7007AC704 /* weatherData.json */,
-				3C3D148F2AA8B7EE007AC704 /* WetherViewModelMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -198,10 +198,10 @@
 		3C68ACAF2AAB0FB1003900EB /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				3C3D149B2AA9D8C8007AC704 /* SearchView.swift */,
-				3C68ACA92AAA1256003900EB /* SearchViewModel.swift */,
-				3C68ACAB2AAA1833003900EB /* SearchViewModelMock.swift */,
 				3C68ACAD2AAA1B85003900EB /* SearchCoordinator.swift */,
+				3C68ACA92AAA1256003900EB /* SearchViewModel.swift */,
+				3C3D149B2AA9D8C8007AC704 /* SearchView.swift */,
+				3C68ACAB2AAA1833003900EB /* SearchViewModelMock.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";

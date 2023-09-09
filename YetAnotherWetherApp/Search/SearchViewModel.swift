@@ -6,10 +6,10 @@ final class SearchViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var selectedPlace: Place?
     @Published var places: [Place] = []
+    @Published var errorMessage: String?
+    let coordinator: SearchCoordinating
     let searchHandler: (Place) -> Void
     private var cancellable = Set<AnyCancellable>()
-    let coordinator: SearchCoordinating
-    var errorMessage: String?
     
     init(coordinator: SearchCoordinating, searchHandler: @escaping (Place) -> Void) {
         self.coordinator = coordinator

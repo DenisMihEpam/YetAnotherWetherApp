@@ -6,20 +6,30 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            List(model.places) { place in
-                Text(place.formattedPlaceTitle)
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .listRowBackground(Color("background"))
-                    .onTapGesture {
-                        model.selectedPlace = place
-                        presentation.wrappedValue.dismiss()
-                    }
+            VStack {
+                List(model.places) { place in
+                    Text(place.formattedPlaceTitle)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .listRowBackground(Color("background"))
+                        .onTapGesture {
+                            model.selectedPlace = place
+                            presentation.wrappedValue.dismiss()
+                        }
+                }
+                .listStyle(.plain)
+                .navigationTitle("Select city")
+                .searchable(text: $model.searchText)
+                .background(Color("background"))
+                if let error = model.errorMessage {
+                    Text(error)
+                        .padding()
+                        .foregroundColor(.red)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                }
             }
-            .listStyle(.plain)
-            .navigationTitle("Select city")
-            .searchable(text: $model.searchText)
-            .background(Color("background"))
         }
 
     }

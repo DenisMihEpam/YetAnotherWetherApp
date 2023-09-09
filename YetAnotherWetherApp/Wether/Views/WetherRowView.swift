@@ -27,8 +27,8 @@ struct WeatherRow: View {
                 Text(model.value)
                     .bold()
                     .font(.title)
-            } // VStack
-        } // HStack
+            }
+        }
     }
 }
 extension WeatherRows {
