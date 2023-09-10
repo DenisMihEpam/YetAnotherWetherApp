@@ -2,12 +2,11 @@ import Foundation
 @testable import YetAnotherWetherApp
 
 final class NetworkManagerMock: Networking {
-    func getCurrentWeather(latitude: Double, longitude: Double) async throws -> YetAnotherWetherApp.WetherResponse {
-        return WetherResponse.mock
-    }
+    var requestPerformed = false
     
-    func searchCity(searchText: String) async throws -> [YetAnotherWetherApp.Place] {
-        return [.mock]
+    func performRequest<T: Decodable>(url: URL) async throws -> T {
+        requestPerformed = true
+        throw AppError.invalidData
     }
     
 }

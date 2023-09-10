@@ -13,7 +13,13 @@ final class SearchCoordinator: SearchCoordinating {
     }
     
     func searchCiti(searchText: String) async throws -> [Place] {
-        return try await networkManager.searchCity(searchText: searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
+        guard let url = Endpoints.search(searchText).url else { return [] }
+        do {
+            let places: [Place] = try await networkManager.performRequest(url: url)
+            return places
+        } catch {
+            throw error
+        }
     }
     
 }

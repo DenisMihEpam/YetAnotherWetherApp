@@ -6,7 +6,10 @@ import CoreLocation
 final class WetherCoordinatorMock: WetherCoordinating {
     var isWetherRequested = false
     
-    func getCurrentWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) async throws -> YetAnotherWetherApp.WetherResponse {
+    func getCurrentWeather(
+        latitude: CLLocationDegrees,
+        longitude: CLLocationDegrees
+    ) async throws -> YetAnotherWetherApp.WetherResponse {
         isWetherRequested = true
         return WetherResponse.mock
     }

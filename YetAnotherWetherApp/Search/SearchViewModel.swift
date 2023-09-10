@@ -17,6 +17,7 @@ final class SearchViewModel: ObservableObject {
         self.$searchText
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .sink { text in
+                guard text.count > 1 else { return }
                 Task {@MainActor [weak self] in
                     guard let self else { return }
                     do {

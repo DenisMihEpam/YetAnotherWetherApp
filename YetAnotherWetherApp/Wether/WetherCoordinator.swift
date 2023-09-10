@@ -13,7 +13,13 @@ final class WetherCoordinator: WetherCoordinating {
     }
     
     func getCurrentWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) async throws -> WetherResponse {
-        return try await networkManager.getCurrentWeather(latitude: latitude, longitude: longitude)
+        guard let url = Endpoints.wether(lat: latitude, lon: longitude).url else { fatalError() }
+        do {
+            let response: WetherResponse = try await networkManager.performRequest(url: url)
+            return response
+        } catch {
+            throw error
+        }
     }
 }
 

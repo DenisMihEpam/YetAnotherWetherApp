@@ -3,45 +3,45 @@ import CoreLocation
 @testable import YetAnotherWetherApp
 
 final class YetAnotherWetherAppTests: XCTestCase {
-
-    var sut: AppCoordinator?
+    
+    var sut: AppCoordinator!
+    var dependencyContainer: DependencyContainer!
     
     override func setUpWithError() throws {
-        sut = AppCoordinator(dependencyContainer: DependencyContainer.mock)
+        dependencyContainer = DependencyContainer.mock
+        sut = AppCoordinator(dependencyContainer: dependencyContainer)
     }
-
+    
     override func tearDownWithError() throws {
         sut = nil
-    }
-
-    func testMakeInitialScreen() throws {
-        Task { @MainActor in
-            let view = sut?.makeInitialScreen()
-            XCTAssertNotNil(view)
-            XCTAssertNotNil(sut?.wetherViewModel)
-            XCTAssertTrue((sut?.persistenceManager as? PersistenceManagerMock)?.isCoordinateRequested == true)
-            XCTAssertTrue((sut?.wetherCoordinator as? WetherCoordinatorMock)?.isWetherRequested == true)
-        }
+        dependencyContainer = nil
     }
     
-    func testCheckInitialState() throws {
-        Task {
-            await sut?.checkInitialState()
-            XCTAssertTrue((sut?.persistenceManager as? PersistenceManagerMock)?.isCoordinateRequested == true)
-            XCTAssertTrue((sut?.wetherCoordinator as? WetherCoordinatorMock)?.isWetherRequested == true)
-        }
+    func testMakeInitialScreen() async throws {
+        
+        let view = await sut?.makeInitialScreen()
+        XCTAssertNotNil(view)
+        XCTAssertNotNil(sut?.wetherViewModel)
+        XCTAssertTrue((sut?.persistenceManager as? PersistenceManagerMock)?.isCoordinateRequested == true)
+        XCTAssertTrue((sut?.wetherCoordinator as? WetherCoordinatorMock)?.isWetherRequested == true)
+        
     }
     
-    func testRequestWether() throws {
-        Task {
-            let state = await sut?.requestWether(for: CLLocationCoordinate2D(latitude: 100, longitude: 100))
-            guard case let .results(response) = state else {
-                XCTFail("Expected state .results")
-                return
-            }
-            XCTAssertEqual(response.name, WetherResponse.mock.name)
-            XCTAssertTrue((sut?.wetherCoordinator as? WetherCoordinatorMock)?.isWetherRequested == true)
+    func testCheckInitialState() async throws {
+        await sut?.checkInitialState()
+        XCTAssertTrue((sut?.persistenceManager as? PersistenceManagerMock)?.isCoordinateRequested == true)
+    }
+    
+    func testRequestWether() async throws {
+        
+        let state = await sut?.requestWether(for: CLLocationCoordinate2D(latitude: 100, longitude: 100))
+        guard case let .results(response) = state else {
+            XCTFail("Expected state .results")
+            return
         }
+        XCTAssertEqual(response.name, WetherResponse.mock.name)
+        XCTAssertTrue((sut?.wetherCoordinator as? WetherCoordinatorMock)?.isWetherRequested == true)
+        
     }
     
     func testStartUpdatingLocations() throws {

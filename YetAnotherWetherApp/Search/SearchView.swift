@@ -21,7 +21,7 @@ struct SearchView: View {
                 .navigationTitle("Select city")
                 .searchable(text: $model.searchText)
                 .background(Color("background"))
-                if let error = model.errorMessage {
+                if let error = model.errorMessage, !error.isEmpty {
                     Text(error)
                         .padding()
                         .foregroundColor(.red)
